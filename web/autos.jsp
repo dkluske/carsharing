@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 07.01.2019, 18:32:48
+    Document   : autos
+    Created on : 07.01.2019, 19:51:40
     Author     : Dome
 --%>
 
@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Car-Sharing</title>
+        <title>Car-Sharing - Fahrzeuge</title>
     </head>
     <body>
-        <h1>Willkommen beim Car-Sharing!</h1>
-        <jsp:include page="login.jsp"/>
+        <h1>Liste der verfügbaren Fahrzeuge</h1>
+        
     </body>
 </html>

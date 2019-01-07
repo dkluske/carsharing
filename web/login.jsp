@@ -13,5 +13,9 @@
     </head>
     <body>
         <h1>Login</h1>
+        
+        Username: <input type="text" name="username"/></br>
+        Passwort: <input type="password" name="passwort"/></br>
+        <input type="submit" value="Login"/>
     </body>
 </html>
