@@ -14,7 +14,7 @@
     <body>
         <ul>
             <li><a href="welcome.jsp">"Home"</a></li>
-            <li><a href="autos.jsp">"Fahrzeugliste"</a></li>
+            <li><a href="dashboard.jsp">"Dashboard"</a></li>
             <li><a href="logout.jsp">"Logout"</a></li>
         </ul>
     </body>
