@@ -7,10 +7,38 @@ package CarSharing.model;
 
 /**
  *
- * @author Dome
+ * @author Matti Düring
  */
 public class Kunde {
-    //Übersicht
+    private String name;
+    private String vorname;
+    
+    private Account account;
+
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
     
     
 }
