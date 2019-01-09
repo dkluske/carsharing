@@ -20,6 +20,8 @@ import java.util.logging.Logger;
  */
 public class RentManager {
     
+    //Verfügbare Autos
+    
     public ArrayList<Auto> getAvailableCars(){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT * FROM auto WHERE auto.verfuegbar = true";
@@ -42,6 +44,8 @@ public class RentManager {
         return autos;
     }
     
+    //Vermietete Autos
+    
     public ArrayList<Auto> getRentCars(int accId){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT auto FROM buchungen WHERE buchungen.account = " + accId + " AND buchungen.active = true";
@@ -62,6 +66,7 @@ public class RentManager {
         return autos;
     }
     
+
     private Auto getAuto(int carId){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT * FROM auto WHERE auto.id = " + carId;
