@@ -62,7 +62,7 @@ public class RentManager {
         return autos;
     }
     
-    public Auto getAuto(int carId){
+    private Auto getAuto(int carId){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT * FROM auto WHERE auto.id = " + carId;
         
