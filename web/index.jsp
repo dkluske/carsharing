@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="CSS\\welcomeCSS.css"/>
     </head>
     <body>
+
         <div class="container" id="back_home" align="center">
             
             <div class="row" id="title" align="center">
@@ -33,6 +34,5 @@
                 </div>
                 
             </div>
-                
     </body>
 </html>
