@@ -12,7 +12,16 @@
         <title>Car-Sharing - Fahrzeuge</title>
     </head>
     <body>
-        <h1>Liste der verfügbaren Fahrzeuge</h1>
+        <h1>Fahrzeuge</h1>
+        <h3>Verfügbare Fahrzeuge</h3>
+        <!--Liste der verfügbaren Fahrzeuge generieren mit Button zum Mieten-->
+        <%
+            
+        %>
+        <h3>Gemietete Fahrzeuge</h3>
+        <!--Liste der gemieteten Fahrzeuge des Nutzers mit Button zum Freigeben-->
+        <%
         
+        %>
     </body>
 </html>
