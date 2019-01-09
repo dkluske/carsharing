@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 08.01.2019, 10:48:57
+    Author     : Dome
+*/
+div {
+        border-width: 1px;
+        border-style: none;
+        border-colour: white;
+}
+.container{
+    background-image: url(back_home_css.jpg);
+    background-size: cover;
+    margin: auto;
+    min-height: 100%;
+    position: absolute;
+    zindex: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: #ffffff;
+    height: 100%;
+}
+h1{
+    font-size: 100%
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+#back_home{
+    width: 100%;
+}
+#login{
+    width: 60%;
+    opacity: 1;
+}
+#title{
+    width: 100%;
+    margin-bottom: 50px;
+    color: black;
+}
+#back_login{
+    width: 100%;
+    background-color: white;
+    background-color: rgba(255,255,255,0.3);
+    padding: 10px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.5); 
+}
+
+
+
