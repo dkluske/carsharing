@@ -16,9 +16,10 @@ import java.util.logging.Logger;
  *
  * @author Matti Düring
  */
-public class Datenbank {
-    private static String url = "jdbc:postgresql://localhost/carsharing";
+public class Datenbank {  
+    private static String url = "jdbc:postgresql://ssabautzen3.ba-bautzen.de:5432/carsharing";
     private static Connection con = null;
+    //ssabautzen3.ba-bautzen.de
     
     public static Connection getConnection(){
         
@@ -28,7 +29,7 @@ public class Datenbank {
         
         try {
             Class.forName("org.postgresql.Driver");
-            Datenbank.con = DriverManager.getConnection(Datenbank.url, "user", "pass");
+            Datenbank.con = DriverManager.getConnection(Datenbank.url, "car", "carsharing");
             
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Datenbank.class.getName()).log(Level.SEVERE, null, ex);
