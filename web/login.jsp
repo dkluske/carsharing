@@ -14,14 +14,16 @@
    String accPass = request.getParameter("passwort");
    
    if( LoginManager.authenticate(accName, accPass) ){
-       out.print("Access");
        
+       %>
+            <jsp:forward page="dashboard.jsp"/>
+       <%
    }
    else{
        
-        %>
+       %>
             <jsp:forward page="loginerror.jsp" />
-        <%
+       <%
    }
    
    
