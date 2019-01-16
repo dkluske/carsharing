@@ -11,9 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fehler!</title>
     </head>
-    <body>
+    <body>      
         <h1>Fehler!</h1>
         <h2>In der Anmeldung ist etwas schief gelaufen, bitte erneut versuchen.</h2>
-        <jsp:include page="login.jsp"/>
     </body>
 </html>
