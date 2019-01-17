@@ -12,7 +12,13 @@
         <title>Auf Wiedersehen!</title>
     </head>
     <body>
-        <h1>Auf Wiedersehen!</h1>
-        <jsp:include page="menu.jsp"/>
+        <div class="container">
+            <div id="logout_head">
+                <h1>Auf Wiedersehen!</h1>
+            </div>
+            <div id="autos_menu"
+                <jsp:include page="menu.jsp"/>
+            </div>
+        </div>
     </body>
 </html>

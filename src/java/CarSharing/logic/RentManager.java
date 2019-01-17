@@ -22,7 +22,7 @@ public class RentManager {
     
     //Verfügbare Autos
     
-    public ArrayList<Auto> getAvailableCars(){
+    public static ArrayList<Auto> getAvailableCars(){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT * FROM auto WHERE auto.verfuegbar = true";
         

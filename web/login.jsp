@@ -7,7 +7,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="CarSharing.datenbank.Datenbank"%>
-<%@page import = "CarSharing.logic.LoginManager" %>
+<%@page import ="CarSharing.logic.LoginManager"%>
 
 <%
    String accName = request.getParameter("name");
