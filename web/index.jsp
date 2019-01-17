@@ -26,7 +26,7 @@
                     <form action="login.jsp" method="post">
                         <h3>Login</h3>
                 
-                        Username: <input type="text" name="kundennummer"/><br/>
+                        Username: <input type="text" name="name"/><br/>
                         Passwort: <input type="password" name="passwort"/><br/>
                         <input type="submit" value="Login"/><br/>
             

@@ -4,18 +4,28 @@
     Author     : Dome
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Car-Sharing - Login</title>
-    </head>
-    <body>
-        <h1>Login</h1>
-        
-        Username: <input type="text" name="username"/></br>
-        Passwort: <input type="password" name="passwort"/></br>
-        <input type="submit" value="Login"/>
-    </body>
-</html>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="CarSharing.datenbank.Datenbank"%>
+<%@page import = "CarSharing.logic.LoginManager" %>
+
+<%
+   String accName = request.getParameter("name");
+   String accPass = request.getParameter("passwort");
+   
+   if( LoginManager.authenticate(accName, accPass) ){
+       
+       %>
+            <jsp:forward page="dashboard.jsp"/>
+       <%
+   }
+   else{
+       
+       %>
+            <jsp:forward page="loginerror.jsp" />
+       <%
+   }
+   
+   
+   
+%>
