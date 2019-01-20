@@ -12,12 +12,10 @@ package CarSharing.model;
 public class Auto {
     private String fabrikat;
     private String modell;
-    private boolean isUsed;
     
-    public Auto(String fabrikat, String modell, boolean isUsed){
+    public Auto(String fabrikat, String modell){
         this.fabrikat = fabrikat;
         this.modell = modell;
-        this.isUsed = isUsed;
     }
 
     public String getFabrikat() {
@@ -34,13 +32,5 @@ public class Auto {
 
     public void setModell(String modell) {
         this.modell = modell;
-    }
-
-    public boolean isIsUsed() {
-        return isUsed;
-    }
-
-    public void setIsUsed(boolean isUsed) {
-        this.isUsed = isUsed;
     }
 }
