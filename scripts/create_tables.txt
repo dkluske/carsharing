@@ -1,17 +1,89 @@
--- Table: public."Kunde"
+-- Table: public.account
 
--- DROP TABLE public."Kunde";
+-- DROP TABLE public.account;
 
-CREATE TABLE public."Kunde"
+CREATE TABLE public.account
 (
-  id integer NOT NULL,
-  name text,
-  vorname text,
-  account integer,
-  CONSTRAINT "PRIMARY_KEY" PRIMARY KEY (id)
+    id SERIAL NOT NULL,
+    benutzername text COLLATE pg_catalog."default",
+    passwort text COLLATE pg_catalog."default",
+    CONSTRAINT account_pkey PRIMARY KEY (id)
 )
 WITH (
-  OIDS=FALSE
-);
-ALTER TABLE public."Kunde"
-  OWNER TO root;
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.account
+    OWNER to root;
+
+-- Table: public.kunde
+
+-- DROP TABLE public.kunde;
+
+CREATE TABLE public.kunde
+(
+    id SERIAL NOT NULL,
+    nachname text COLLATE pg_catalog."default",
+    vorname text COLLATE pg_catalog."default",
+    account integer NOT NULL REFERENCES account(id),
+    CONSTRAINT kunde_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.kunde
+    OWNER to root;
+
+-- Table: public.auto
+
+-- DROP TABLE public.auto;
+
+CREATE TABLE public.auto
+(
+    id serial NOT NULL,
+    hersteller text COLLATE pg_catalog."default",
+    modell text COLLATE pg_catalog."default",
+    "isUsed" boolean,
+    CONSTRAINT auto_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.auto
+    OWNER to root;
+
+-- Table: public.buchung
+
+-- DROP TABLE public.buchung;
+
+CREATE TABLE public.buchung
+(
+    id serial NOT NULL ,
+    datum date,
+    auto integer REFERENCES auto(id),
+    account integer REFERENCES account(id),
+    status boolean,
+    CONSTRAINT buchung_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.buchung
+    OWNER to root;
+
+INSERT INTO public.account(benutzername, passwort) VALUES('root','passwort');
+INSERT INTO public.account(benutzername, passwort) VALUES('share', 'passwort2');
+INSERT INTO public.account(benutzername, passwort) VALUES('Rent', 'passwort3');
+INSERT INTO public.kunde(nachname,vorname,account) VALUES('Braun', 'Max', 1);
+INSERT INTO public.kunde(nachname, vorname, account) VALUES('Schmidt', 'Werner', 2);
+INSERT INTO public.kunde(nachname, vorname, account) VALUES('Müller', 'Horst', 3);
+INSERT INTO public.auto(hersteller,modell,"isUsed") VALUES('Audi', 'Q7', false);
+INSERT INTO public.auto(hersteller,modell,"isUsed") VALUES('VW', 'Golf', false);
+INSERT INTO public.auto(hersteller, modell, "isUsed") VALUES('Opel', 'Astra', false);
