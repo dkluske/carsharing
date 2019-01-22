@@ -1,0 +1,17 @@
+-- Table: public."Kunde"
+
+-- DROP TABLE public."Kunde";
+
+CREATE TABLE public."Kunde"
+(
+  id integer NOT NULL,
+  name text,
+  vorname text,
+  account integer,
+  CONSTRAINT "PRIMARY_KEY" PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public."Kunde"
+  OWNER TO root;

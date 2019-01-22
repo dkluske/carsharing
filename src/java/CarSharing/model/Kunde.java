@@ -7,13 +7,18 @@ package CarSharing.model;
 
 /**
  *
- * @author Matti Düring
+ * @author Düring, Matti
  */
-public class Kunde {
+public class Kunde extends Account{
     private String name;
     private String vorname;
-    
-    private Account account;
+
+    public Kunde(String name, String vorname, String accName, int accID) {
+        super(accName, accID);
+        
+        this.name = name;
+        this.vorname = vorname;
+    }
 
     
     public String getName() {
@@ -31,14 +36,9 @@ public class Kunde {
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
     
-    
+    @Override
+    public String toString(){
+        return this.vorname + " " + this.name;
+    }
 }

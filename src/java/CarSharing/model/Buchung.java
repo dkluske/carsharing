@@ -5,37 +5,38 @@
  */
 package CarSharing.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Düring, Matti
  */
-public class Auto {
-    private String fabrikat;
+public class Buchung {
+    private String hersteller;
     private String modell;
+    private String date;
     
-    public Auto(String fabrikat, String modell){
-        this.fabrikat = fabrikat;
+    public Buchung(String hersteller, String modell, String date){
+        this.hersteller = hersteller;
         this.modell = modell;
+        this.date = date;
     }
 
-    public String getFabrikat() {
-        return fabrikat;
-    }
-
-    public void setFabrikat(String fabrikat) {
-        this.fabrikat = fabrikat;
+    public String getHersteller() {
+        return hersteller;
     }
 
     public String getModell() {
         return modell;
     }
 
-    public void setModell(String modell) {
-        this.modell = modell;
+    public String getDate() {
+        return date;
     }
     
-    @Override
     public String toString(){
-        return this.getFabrikat() + " " + this.getModell();
+        return this.hersteller + " " + this.modell + "\t " + this.getDate();
     }
+    
+    
 }

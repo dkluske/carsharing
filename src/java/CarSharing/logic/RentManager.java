@@ -7,6 +7,8 @@ package CarSharing.logic;
 
 import CarSharing.datenbank.Datenbank;
 import CarSharing.model.Auto;
+import CarSharing.model.Buchung;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,76 +18,57 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Dome
+ * @author Düring, Matti
  */
 public class RentManager {
     
-    //Verfügbare Autos
-    
-    public ArrayList<Auto> getAvailableCars(){
+    public static ArrayList<Auto> getUnusedCars(){
         Statement stm = Datenbank.getStatement();
-        String sql = "SELECT * FROM auto WHERE auto.verfuegbar = true";
+        String sql = "SELECT * FROM public.auto WHERE \"isUsed\" = false";
         
-        ArrayList<Auto> autos = new ArrayList<Auto>();
+        ArrayList<Auto> cars = new ArrayList<Auto>();
         
         try {
             ResultSet rs = stm.executeQuery(sql);
             
             while(rs.next()){
-                String fabrikat = rs.getString("fabrikat");
+                Auto car = new Auto(rs.getString("hersteller"), rs.getString("modell"));
+                cars.add(car);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cars;
+    }
+    
+    public static ArrayList<Buchung> getRentCars(int accID){
+        Statement stm = Datenbank.getStatement();
+        
+        String sql = "SELECT hersteller, modell, datum FROM public.auto " + 
+                     "INNER JOIN public.buchung ON public.buchung.account =" + accID + 
+                     "AND public.buchung.auto = public.auto.id " + 
+                     "AND public.buchung.status = true";
+        
+        ArrayList<Buchung> rent = new ArrayList<Buchung>();
+        
+        try {
+            ResultSet rs = stm.executeQuery(sql);
+            
+            while(rs.next()){
+                String hersteller = rs.getString("hersteller");
                 String modell = rs.getString("modell");
-                autos.add( new Auto(fabrikat, modell, true) );
+                String date = rs.getDate("datum").toString();
+                
+                rent.add( new Buchung(hersteller, modell, date ) );
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return autos;
+        return rent;
     }
     
-    //Vermietete Autos
-    
-    public ArrayList<Auto> getRentCars(int accId){
-        Statement stm = Datenbank.getStatement();
-        String sql = "SELECT auto FROM buchungen WHERE buchungen.account = " + accId + " AND buchungen.active = true";
-        
-        ArrayList<Auto> autos = new ArrayList<Auto>();
-        
-        try {
-            ResultSet rs = stm.executeQuery(sql);
-            
-            while(rs.next()){
-                autos.add( getAuto(rs.getInt("auto")) );
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return autos;
-    }
-    
-
-    private Auto getAuto(int carId){
-        Statement stm = Datenbank.getStatement();
-        String sql = "SELECT * FROM auto WHERE auto.id = " + carId;
-        
-        Auto auto = null;
-        
-        try {
-            ResultSet rs = stm.executeQuery(sql);
-            
-            while(rs.next()){
-                String fabrikat = rs.getString("fabrikat");
-                String modell = rs.getString("modell");
-                auto = new Auto(fabrikat, modell, false);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return auto;
-    }
 }
