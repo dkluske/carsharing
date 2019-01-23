@@ -56,6 +56,39 @@ a{
     padding: 10px;
     box-shadow: 2px 5px 15px rgba(0,0,0,0.5); 
 }
+#back_dash{
+    
+}
+#dash_body{
+    
+}
+#dash_head{
+    
+}
+#back_error{
+    
+}
+#back_welcome{
+    
+}
+#autos_1{
+    width: 100%;
+    background-color: rgba(255,255,255,1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
+    color: rgba(0,0,0,1);
+}
+#autos_2{
+    width: 100%;
+    background-color: rgba(255,255,255,1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.5);
+    color: rgba(0,0,0,1);
+}
+
 
 
 
