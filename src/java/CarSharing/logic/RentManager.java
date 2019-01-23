@@ -96,9 +96,6 @@ public class RentManager {
     public static void releaseCar(String carName, int accID){
         int carID = getCarID(carName);
         
-        System.out.println(carName);
-        System.out.println(accID);
-        
         Statement stm = Datenbank.getStatement();
         String sql = "UPDATE public.buchung SET status = false WHERE " +
                      "account = " + accID + " AND auto = " + carID + " AND " +

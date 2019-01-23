@@ -34,6 +34,4 @@ public class Account {
     public void setId(int id) {
         this.accID = accID;
     }
-    
-    
 }
