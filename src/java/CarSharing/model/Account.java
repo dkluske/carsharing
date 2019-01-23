@@ -8,15 +8,15 @@ package CarSharing.model;
 
 /**
  *
- * @author OnTheRockz
+ * @author Düring, Matti
  */
 public class Account {
     private String accName;
-    private int id;
+    private int accID;
     
-    public Account(String accName, int id){
+    public Account(String accName, int accID){
         this.accName = accName;
-        this.id = id;
+        this.accID = accID;
     }
 
     public String getAccName() {
@@ -28,11 +28,11 @@ public class Account {
     }
 
     public int getId() {
-        return id;
+        return accID;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.accID = accID;
     }
     
     

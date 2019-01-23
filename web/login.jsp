@@ -4,6 +4,7 @@
     Author     : Dome
 --%>
 
+<%@page import="CarSharing.model.Kunde"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="CarSharing.datenbank.Datenbank"%>
@@ -13,7 +14,12 @@
    String accName = request.getParameter("name");
    String accPass = request.getParameter("passwort");
    
-   if( LoginManager.authenticate(accName, accPass) ){
+   Kunde kunde;
+   
+   if( LoginManager.checkLoginCredentials(accName, accPass) ){
+       
+       kunde = LoginManager.getKunde(accName);
+       request.getSession().setAttribute("kunde", kunde);
        
        %>
             <jsp:forward page="dashboard.jsp"/>
