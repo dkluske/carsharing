@@ -15,7 +15,7 @@ if(request.getSession().getAttribute("kunde") == null){
 <ul>
     <li><a href="welcome.jsp">Home</a></li>
     <li><a href="dashboard.jsp">Dashboard</a></li>
-    <li><a href="logout.jsp">Logout</a></li>
+    <li><a href="index.jsp">Logout</a></li>
 </ul>
     <%
 }

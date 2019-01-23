@@ -22,7 +22,7 @@
             Kunde kunde = (Kunde) request.getSession().getAttribute("kunde");
             
             ArrayList<Auto> cars = RentManager.getUnusedCars();
-            ArrayList<Buchung> rents = RentManager.getRentCars( kunde.getId() );
+            ArrayList<Buchung> rents = RentManager.getRentedCars( kunde.getId() );
             
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,37 +31,46 @@
     </head>
     <body>
         <div id="autos_back">
-        <h1>Fahrzeuge</h1>
         <div id="autos_1" align="left">
+            
         <h3>Verfügbare Fahrzeuge</h3>
-          <form action="" method="post">
-            <input type="text" name="rent" value="Fahrzeug"/>
+        
+        <%
+            for(Auto car : cars){
+                
+            %>
+                <%=car%> <br>
+            <%
+            }
+        %>
+ 
+          <form action="rent.jsp" method="post">
+            <br>
+            <input type="text" name="carname" value="Fahrzeug"/>
             <input type="submit" value="Mieten"/>
           </form>
         <!--Liste der verfügbaren Fahrzeuge generieren mit Button zum Mieten-->
-        <%
-            for(Auto car : cars){
-                %>
-                <%=car%> <br>
-                <%
-            }
-        %>
+        
         </div>
         <div id="autos_2" align="left">
         <h3>Gemietete Fahrzeuge</h3>
-          <form action="" method="post">
-            <input type="text" name="free" value="Fahrzeug"/>
-            <input type="submit" value="Freigeben"/>
-          </form>
-        <!--Liste der gemieteten Fahrzeuge des Nutzers mit Button zum Freigeben-->
+        
         <%
             for(Buchung rent : rents){
-                %>
+                
+            %>
                 <%=rent%> <br>
-                <%
+            <%
             }
         
         %>
+        
+          <form action="release.jsp" method="post">
+            <br>
+            <input type="text" name="carname" value="Fahrzeug"/>
+            <input type="submit" value="Freigeben"/>
+          </form>
+        <!--Liste der gemieteten Fahrzeuge des Nutzers mit Button zum Freigeben-->
       </div>
       </div>
     </body>

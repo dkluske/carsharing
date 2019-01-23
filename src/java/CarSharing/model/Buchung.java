@@ -5,8 +5,6 @@
  */
 package CarSharing.model;
 
-import java.sql.Date;
-
 /**
  *
  * @author Düring, Matti
@@ -35,7 +33,7 @@ public class Buchung {
     }
     
     public String toString(){
-        return this.hersteller + " " + this.modell + "\t " + this.getDate();
+        return this.hersteller + " " + this.modell + " gemietet am " + this.getDate();
     }
     
     
