@@ -23,6 +23,10 @@ import java.util.logging.Logger;
  */
 public class RentManager {
     
+    /*
+    Gibt eine ArrayList mit allen nicht gemieteten Autos zurück
+    */
+    
     public static ArrayList<Auto> getUnusedCars(){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT * FROM public.auto WHERE \"isUsed\" = false";
@@ -43,6 +47,11 @@ public class RentManager {
         
         return cars;
     }
+    
+    /*
+    Nimmt eine Account ID entgegen und gibt eine ArrayList mit allen von diesem
+    Account gemieteten autos zurück
+    */
     
     public static ArrayList<Buchung> getRentedCars(int accID){
         Statement stm = Datenbank.getStatement();
@@ -72,6 +81,12 @@ public class RentManager {
         return rent;
     }
     
+    /*
+    Führt einen Miet-Vorgang aus. Buchung wird in der Datenbank erstellt und als
+    aktiv(true) markiert.
+    Das entsprechende Auto wird mit der Methode setIsUsed() als vergeben markiert. 
+    */
+    
     public static void rentCar(String carName, int accID){
         int carID = getCarID(carName);
         DateFormat f = DateFormat.getDateInstance(DateFormat.SHORT);
@@ -93,6 +108,12 @@ public class RentManager {
         setIsUsed(carID, true);
     }
     
+    /*
+    Gibt ein gemietetes Auto wieder frei. Setzt den Status der entsprechenden
+    Buchung in der Datenbank auf inaktiv(false) und markiert das entsprechende
+    Auto mithilfe der Methode setIsUsed() als verfügbar
+    */
+    
     public static void releaseCar(String carName, int accID){
         int carID = getCarID(carName);
         
@@ -110,6 +131,12 @@ public class RentManager {
         
         setIsUsed(carID, false); 
     }
+    
+    /*
+    Legt den Status eines Autos in der Datenbank fest
+    Verfügbar = true
+    Vergeben = false
+    */
     
     private static void setIsUsed(int carID, boolean state){
         Statement stm = Datenbank.getStatement();

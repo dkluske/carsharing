@@ -6,7 +6,6 @@
 package CarSharing.logic;
 
 import CarSharing.model.Auto;
-import CarSharing.model.Buchung;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
