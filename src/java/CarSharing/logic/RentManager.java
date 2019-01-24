@@ -8,11 +8,12 @@ package CarSharing.logic;
 import CarSharing.datenbank.Datenbank;
 import CarSharing.model.Auto;
 import CarSharing.model.Buchung;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,7 +44,7 @@ public class RentManager {
         return cars;
     }
     
-    public static ArrayList<Buchung> getRentCars(int accID){
+    public static ArrayList<Buchung> getRentedCars(int accID){
         Statement stm = Datenbank.getStatement();
         
         String sql = "SELECT hersteller, modell, datum FROM public.auto " + 
@@ -69,6 +70,84 @@ public class RentManager {
         }
         
         return rent;
+    }
+    
+    public static void rentCar(String carName, int accID){
+        int carID = getCarID(carName);
+        DateFormat f = DateFormat.getDateInstance(DateFormat.SHORT);
+        Date date = new Date();
+        
+        
+        Statement stm = Datenbank.getStatement();
+        String sql = "INSERT INTO public.buchung(datum,auto,account,status)" +
+                     "VALUES('" + f.format(date).toString() + "', " + carID + ", " + accID +
+                     ", " + true + ")";
+        
+        try {
+            stm.execute(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        setIsUsed(carID, true);
+    }
+    
+    public static void releaseCar(String carName, int accID){
+        int carID = getCarID(carName);
+        
+        Statement stm = Datenbank.getStatement();
+        String sql = "UPDATE public.buchung SET status = false WHERE " +
+                     "account = " + accID + " AND auto = " + carID + " AND " +
+                     "status = true"; 
+        
+        try {
+            stm.executeUpdate(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        setIsUsed(carID, false); 
+    }
+    
+    private static void setIsUsed(int carID, boolean state){
+        Statement stm = Datenbank.getStatement();
+        String sql = "UPDATE public.auto SET \"isUsed\" = " + state + " WHERE id = " + carID;
+        
+        try {
+            stm.executeUpdate(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private static int getCarID(String carName){
+        int carID = 0;
+        
+        String[] car = carName.split(" ");
+        
+        String hersteller = car[0];
+        String modell = car[1];
+        
+        Statement stm = Datenbank.getStatement();
+        String sql = "SELECT id FROM public.auto WHERE " +
+                     "hersteller = '" + hersteller + "' AND " +
+                     "modell = '" + modell + "'";
+        
+        try {
+            ResultSet rs = stm.executeQuery(sql);
+            
+            while(rs.next()){
+                carID = rs.getInt("id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RentManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return carID;
     }
     
 }

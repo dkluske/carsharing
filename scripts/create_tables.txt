@@ -79,11 +79,19 @@ ALTER TABLE public.buchung
     OWNER to root;
 
 INSERT INTO public.account(benutzername, passwort) VALUES('root','passwort');
-INSERT INTO public.account(benutzername, passwort) VALUES('share', 'passwort2');
-INSERT INTO public.account(benutzername, passwort) VALUES('Rent', 'passwort3');
-INSERT INTO public.kunde(nachname,vorname,account) VALUES('Braun', 'Max', 1);
+INSERT INTO public.account(benutzername, passwort) VALUES('CarUser', 'carsharing');
+INSERT INTO public.account(benutzername, passwort) VALUES('BlindDriver', 'blind');
+INSERT INTO public.account(benutzername, passwort) VALUES('Ghostrider', 'ghost');
+INSERT INTO public.account(benutzername, passwort) VALUES('Sonntagsfahrer', 'sonntag');
+
+INSERT INTO public.kunde(nachname,vorname,account) VALUES('Braun', 'Max',1);
 INSERT INTO public.kunde(nachname, vorname, account) VALUES('Schmidt', 'Werner', 2);
 INSERT INTO public.kunde(nachname, vorname, account) VALUES('Müller', 'Horst', 3);
+INSERT INTO public.kunde(nachname, vorname, account) VALUES('Schwarz', 'Maximilian', 4);
+INSERT INTO public.kunde(nachname, vorname, account) VALUES('Wolf', 'Tobias', 5);
+
 INSERT INTO public.auto(hersteller,modell,"isUsed") VALUES('Audi', 'Q7', false);
 INSERT INTO public.auto(hersteller,modell,"isUsed") VALUES('VW', 'Golf', false);
 INSERT INTO public.auto(hersteller, modell, "isUsed") VALUES('Opel', 'Astra', false);
+INSERT INTO public.auto(hersteller, modell, "isUsed") VALUES('Honda', 'Civic', false);
+INSERT INTO public.auto(hersteller, modell, "isUsed") VALUES('Porsche', 'Cayenne', false);
