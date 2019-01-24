@@ -22,13 +22,15 @@
     </head>
     <body>
         <div>
-            <h1> Willkommen <%=kunde%> </h1>
-        </div>
-        <div>
-            <jsp:include page="menu.jsp"/>
-        </div>
-        <div>
-            <jsp:include page="autos.jsp"/>
+            <div class="row" align="center">
+                <h1> Willkommen <%=kunde%> </h1>
+            </div>
+            <div class="row">
+                <jsp:include page="menu.jsp"/>
+            </div>
+            <div class="row">
+                <jsp:include page="autos.jsp"/>
+            </div>
         </div>
     </body>
 </html>
