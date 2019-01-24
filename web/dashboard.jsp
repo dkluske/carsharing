@@ -21,12 +21,14 @@
         <link rel="stylesheet" type="text/css" href="CSS\\welcomeCSS.css"/>
     </head>
     <body>
-        
-        <h1> Willkommen <%=kunde%> </h1>
-        
-        
-        <jsp:include page="autos.jsp"/>
-        <jsp:include page="menu.jsp"/>
-        
+        <div>
+            <h1> Willkommen <%=kunde%> </h1>
+        </div>
+        <div>
+            <jsp:include page="menu.jsp"/>
+        </div>
+        <div>
+            <jsp:include page="autos.jsp"/>
+        </div>
     </body>
 </html>
