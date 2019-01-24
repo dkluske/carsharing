@@ -12,9 +12,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <% 
-            Kunde kunde = (Kunde) request.getSession().getAttribute("kunde");
-        %>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Car-Sharing - Dashboard</title>
@@ -23,14 +20,17 @@
     <body>
         <div>
             <div class="row" id="dash_head" align="center">
-                <h1> Willkommen <%=kunde%> </h1>
+                <jsp:include page="welcome.jsp"/>
             </div>
-            <div class="row">
-                <jsp:include page="menu.jsp"/>
-            </div>
+
             <div class="row">
                 <jsp:include page="autos.jsp"/>
             </div>
+            
+            <div class="row">
+                <jsp:include page="menu.jsp"/>
+            </div>
+            
         </div>
     </body>
 </html>
