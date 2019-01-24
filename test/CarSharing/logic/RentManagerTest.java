@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author OnTheRockz
+ * @author Düring, Matti
  */
 public class RentManagerTest {
     ArrayList<Auto> autos = new ArrayList<Auto>();

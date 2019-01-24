@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author OnTheRockz
+ * @author Düring, Matti
  */
 public class LoginManagerTest {
     Kunde kunde = new Kunde("Schmidt", "Werner", "CarUser", 2);
