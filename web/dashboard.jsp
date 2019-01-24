@@ -24,7 +24,9 @@
         
         <h1> Willkommen <%=kunde%> </h1>
         
-        <jsp:include page="menu.jsp"/>
+        
         <jsp:include page="autos.jsp"/>
+        <jsp:include page="menu.jsp"/>
+        
     </body>
 </html>
