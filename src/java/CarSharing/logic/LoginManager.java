@@ -52,7 +52,7 @@ public class LoginManager {
     
     private static int getAccountID(String accName){
         Statement stm = Datenbank.getStatement();
-        String sql = "SELECT * FROM public.account WHERE benutzername = '" + accName + "'";
+        String sql = "SELECT id FROM public.account WHERE benutzername = '" + accName + "'";
         
         int id = 0;
         
@@ -72,7 +72,7 @@ public class LoginManager {
     
     private static String getKundenName(int id){
         Statement stm = Datenbank.getStatement();
-        String sql = "SELECT * FROM public.kunde WHERE account = " + id;
+        String sql = "SELECT nachname FROM public.kunde WHERE account = " + id;
         
         String name = null;
         
@@ -92,7 +92,7 @@ public class LoginManager {
     
     private static String getKundenVorname(int id){
         Statement stm = Datenbank.getStatement();
-        String sql = "SELECT * FROM public.kunde WHERE account = " + id;
+        String sql = "SELECT vorname FROM public.kunde WHERE account = " + id;
         
         String vorname = null;
         
