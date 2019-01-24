@@ -19,6 +19,12 @@ import java.util.logging.Logger;
  */
 public class LoginManager {
     
+    /*
+    Gleicht die vom Benutzer eingegebenen Login Daten mit denen der Datenbank ab
+    Bei korrekten Benutzerdaten ist Rückgabewert true
+    Bei falschen Benutzerdaten ist Rückgabewert false
+    */
+    
     public static boolean checkLoginCredentials(String accName, String accPass){
         Statement stm = Datenbank.getStatement();
         String sql = "SELECT passwort FROM public.account WHERE benutzername = '" + accName + "'";
@@ -39,6 +45,13 @@ public class LoginManager {
         
         return false;
     }
+    
+    /*
+    Gibt ein Kundenobjekt mit den Kundendaten Nachname, Vorname, Accountname und
+    Account ID zurück.
+    getKunde() Benutzt für die Ermittlung diverser Daten die entsprechenden
+    privaten Methoden
+    */
     
     public static Kunde getKunde(String accName){
         int id = getAccountID(accName);
