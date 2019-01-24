@@ -22,7 +22,7 @@
     </head>
     <body>
         <div>
-            <div class="row" align="center">
+            <div class="row" id="dash_head" align="center">
                 <h1> Willkommen <%=kunde%> </h1>
             </div>
             <div class="row">
